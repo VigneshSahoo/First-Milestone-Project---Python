@@ -71,8 +71,11 @@ def player_choice(board):
     position = ''
     while position not in board:
         position = input('Please select your position i.e., (1-9): ')
-        if position != range(1, 10):
-            print('Position out of bound! ')
+        if int(position) not in range(1, 10):
+            print('Out of bound!')
+        else:
+            if board[int(position)] == 'X' or board[int(position)] == 'O':
+                print('Invalid selection!. Position already taken. ')
     return int(position)
 
 
@@ -94,6 +97,8 @@ while True:
     print('Welcome to Tic Tac Toe!')
     print(display_board(intro_board))
     board = ['#', '7', '8', '9', '4', '5', '6', '1', '2', '3']
+    p1 = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
+    p2 = ['O', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O']
     player_input()
     print(display_board(board))
     player1 = choose_first()
@@ -102,10 +107,7 @@ while True:
     while game_on:
         position = player_choice(board)
         position_check = space_check(board, position)
-        if position_check == False:
-            print('Position already filled. Please choose another number.')
-        if position_check == True:
-            place_marker(board, player1, position)
+        place_marker(board, player1, position)
         print(display_board(board))
 
     if not replay():
