@@ -1,11 +1,13 @@
 def replay():
-    play_again = False
-    while not play_again:
-        player_answer = input('Would you like to play again?(Yes/No): ')
+    play_again = True
+    while play_again:
+        player_answer = input('\nWould you like to play again?(Yes/No): ')
         if player_answer.upper() == 'YES':
             play_again = True
             break
-        else:
-            continue
+        elif player_answer.upper() == 'NO':
+            play_again = False
+            break
+    return play_again
 
-replay()
+print(replay())
