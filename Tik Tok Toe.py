@@ -117,7 +117,11 @@ while True:
         count += 1
         print(draw)
         if draw == False:
-            replay()
+            restart = replay()
+            if restart == False:
+                continue
+            else:
+                break
 
     # if not replay():
     #     print('Thanks for playing! Hope you have enjoyed the game.\n')
